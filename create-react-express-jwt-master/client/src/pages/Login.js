@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import AuthService from './../components/AuthService';
-import {Link, Redirect} from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class Login extends Component {
   constructor() {
@@ -16,6 +16,8 @@ class Login extends Component {
         // once user is logged in
         // take them to their profile page
         this.props.history.replace(`/`);
+        //added reload to immediately change navbar when a user connects
+        document.location.reload();
       })
       .catch(err => {
         alert(err.response.data.message)
@@ -23,9 +25,9 @@ class Login extends Component {
   };
 
   handleChange = event => {
-    const {name, value} = event.target;
+    const { name, value } = event.target;
     this.setState({
-        [name]: value
+      [name]: value
     });
   };
 
@@ -40,26 +42,26 @@ class Login extends Component {
           <div className="form-group">
             <label htmlFor="email">Email address:</label>
             <input className="form-control"
-                   placeholder="Email goes here..."
-                   name="email"
-                   type="email"
-                   id="email"
-                   autoComplete="email"
-                   onChange={this.handleChange}/>
+              placeholder="Email goes here..."
+              name="email"
+              type="email"
+              id="email"
+              autoComplete="email"
+              onChange={this.handleChange} />
           </div>
           <div className="form-group">
             <label htmlFor="pwd">Password:</label>
             <input className="form-control"
-                   placeholder="Password goes here..."
-                   name="password"
-                   type="password"
-                   id="pwd"
-                   autoComplete="current-password"
-                   onChange={this.handleChange}/>
+              placeholder="Password goes here..."
+              name="password"
+              type="password"
+              id="pwd"
+              autoComplete="current-password"
+              onChange={this.handleChange} />
           </div>
           <button type="submit" className="btn btn-primary">Submit</button>
         </form>
-        <p><Link to="/signup">Go to Signup</Link></p>
+        <p><Link to="/signup">New User?</Link></p>
       </div>
 
     );

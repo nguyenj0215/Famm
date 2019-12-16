@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import withAuth from './../components/withAuth';
 import API from './../utils/API';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
+//<Link to="/">Go home</Link>
 
 class Profile extends Component {
 
@@ -23,10 +24,8 @@ class Profile extends Component {
     return (
       <div className="container Profile">
         <h1>On the profile page!</h1>
-        <p>Username: {this.state.username}</p>
-        <p>Email: {this.state.email}</p>
-        <Link to="/">Go home</Link>
       </div>
+
     )
   }
 }

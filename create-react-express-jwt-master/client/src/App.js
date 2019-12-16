@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
+import API from "./utils/API";
+import Postings from './components/Postings';
+import FamilyTable from './components/FamilyTable';
 const Auth = new AuthService();
 
 class App extends Component {
+  state = {
+    username: "",
+    email: ""
+  };
 
+  componentDidMount() {
+    API.getUser(this.props.user.id).then(res => {
+      this.setState({
+        username: res.data.username,
+        email: res.data.email,
+      })
+    })
+  }
 
   handleLogout = () => {
     Auth.logout();
@@ -20,14 +34,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome {this.props.user.email}</h2>
+        <div className="container">
+          <div className="row">
+            <Postings />
+          </div>
+          <div className="row">
+            <FamilyTable />
+          </div>
         </div>
-        <p className="App-intro">
-          <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
-          <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
-        </p>
+
       </div>
     );
   }
