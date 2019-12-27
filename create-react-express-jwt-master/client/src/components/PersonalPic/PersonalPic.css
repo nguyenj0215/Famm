@@ -1,0 +1,12 @@
+.personalPicDiv {
+    margin: 0 auto;
+    text-align: center;
+}
+.personalPic {
+    border: 1px solid black;
+    width: 225px;
+    height: 200px;
+}
+.addPic {
+    margin-top: 5px;
+}

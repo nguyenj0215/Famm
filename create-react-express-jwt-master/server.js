@@ -77,6 +77,18 @@ app.use(function (err, req, res, next) {
   }
 });
 
+app.get("/api/addFamily", function(req, res) {
+  db.User.update({ username: req.body.username }, { $set: { family: req.body.familyName} })
+  .then(data => res.json(data))
+  .catch(err => res.status(400).json(err));
+})
+
+app.get("/api/addPicture", function(req, res) {
+  db.User.update({ username: req.body.username }, { $set: { personalPic: req.body.personalPic} })
+  .then(data => res.json(data))
+  .catch(err => res.status(400).json(err));
+})
+
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function(req, res) {

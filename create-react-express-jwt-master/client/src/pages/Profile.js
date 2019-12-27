@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import withAuth from './../components/withAuth';
 import API from './../utils/API';
-//import { Link } from 'react-router-dom';
-//<Link to="/">Go home</Link>
+import PersonalPic from '../components/PersonalPic';
+import Family from '../components/Family';
+import Post from '../components/Post';
+import '../App.css';
 
 class Profile extends Component {
 
   state = {
     username: "",
-    email: ""
   };
 
   componentDidMount() {
@@ -20,10 +21,27 @@ class Profile extends Component {
     });
   }
 
+  /*
+  Need to add components for:
+  Personal image (need to display image/default, able to add an image)
+  Family 
+  New Post
+  */
+
   render() {
     return (
-      <div className="container Profile">
-        <h1>On the profile page!</h1>
+      <div className="container ProfilePage">
+        <div className="row">
+          <div className="col-sm-6">
+            <PersonalPic />
+          </div>
+          <div className="col-sm-6">
+            <Family />
+          </div>
+        </div>
+        <div className="row">
+          <Post />
+        </div>
       </div>
 
     )
