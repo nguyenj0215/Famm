@@ -40,7 +40,7 @@ class PersonalPic extends Component {
 
             <div className='personalPicDiv'>
 
-                <img className='personalPic' id="personalPic" alt="Profile" src={this.state.personalPic}></img>
+                <img className='personalPic' id="personalPic" alt="Profile" src={this.state.personalPic ? this.state.personalPic : 'https://img.icons8.com/nolan/64/000000/help--v2.png'}></img>
 
                 <form onSubmit={this.handleFormSubmit}>
 

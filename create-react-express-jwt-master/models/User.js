@@ -26,6 +26,9 @@ const UserSchema = new Schema({
     type: String,
     default: "https://img.icons8.com/nolan/64/000000/help--v2.png"
   },
+  family: {
+    type: String
+  },
   createdAt: {
     type: Date,
     default: Date.now
