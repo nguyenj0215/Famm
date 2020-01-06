@@ -11,10 +11,10 @@ export default {
   },
   // add a family
   addFamily: (username, familyName) => {
-    return axios.put('api/addFamily', { username: username, familyName: familyName })
+    return axios.put('/api/addFamily', { username: username, familyName: familyName })
   },
   // add a picture
   addPictureURL: (username, personalPic) => {
-    return axios.put('api/addPicture', { username: username, personalPic: personalPic })
+    return axios.put('/api/addPicture', { username: username, personalPic: personalPic })
   },
 };

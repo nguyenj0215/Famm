@@ -30,7 +30,6 @@ mongoose
   .then(() => console.log("MongoDB Connected!"))
   .catch(err => console.error(err));
 
-
 // LOGIN ROUTE
 app.post('/api/login', (req, res) => {
   auth
@@ -46,14 +45,13 @@ app.post('/api/signup', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
-app.put("api/addFamily", function(req, res) {
+app.put("/api/addFamily", function(req, res) {
   db.User.update({ username: req.body.username }, { $set: { family: req.body.familyName} })
   .then(data => res.json(data))
   .catch(err => res.status(400).json(err));
 })
 
-app.put("api/addPicture", function(req, res) {
-  console.log('hey')
+app.put("/api/addPicture", function(req, res) {
   db.User.update({ username: req.body.username }, { $set: { picture: req.body.personalPic} })
   .then(data => res.json(data))
   .catch(err => res.status(400).json(err));
