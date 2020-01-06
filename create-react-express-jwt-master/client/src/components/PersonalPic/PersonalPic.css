@@ -4,7 +4,7 @@
 }
 .personalPic {
     border: 1px solid black;
-    width: 225px;
+    width: 100%;
     height: 200px;
 }
 .addPic {

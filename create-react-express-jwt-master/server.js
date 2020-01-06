@@ -57,6 +57,12 @@ app.put("/api/addPicture", function(req, res) {
   .catch(err => res.status(400).json(err));
 })
 
+app.put("/api/addPost", function(req,res) {
+  db.User.update({username: req.body.username}, { $set: {post: req.body.post}})
+  .then(data => res.json(data))
+  .catch(err => res.status(400).json(err));
+})
+
 // Any route with isAuthenticated is protected and you need a valid token
 // to access
 app.get('/api/user/:id', isAuthenticated, (req, res) => {

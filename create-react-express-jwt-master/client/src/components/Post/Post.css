@@ -1,0 +1,13 @@
+.postAddDiv {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 15px;
+}
+#postingTextBox {
+    text-align: none;
+    height: 200px;
+    width: 350px;
+}
+.addPostSubmit {
+    border: 1px solid black;
+}

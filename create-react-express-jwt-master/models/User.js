@@ -29,6 +29,9 @@ const UserSchema = new Schema({
   family: {
     type: String
   },
+  post: {
+    type: String
+  },
   createdAt: {
     type: Date,
     default: Date.now

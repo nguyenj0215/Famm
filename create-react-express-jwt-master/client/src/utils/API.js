@@ -17,4 +17,8 @@ export default {
   addPictureURL: (username, personalPic) => {
     return axios.put('/api/addPicture', { username: username, personalPic: personalPic })
   },
+  //add a posting to your family
+  addPost: (username, post) => {
+    return axios.put('/api/addPost', {username: username, post: post})
+  }
 };

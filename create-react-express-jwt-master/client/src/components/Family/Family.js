@@ -40,7 +40,7 @@ class Family extends Component {
             <div className='familyAddDiv'>
                 <form onSubmit={this.handleFormSubmit}>
 
-        <div className='familyNameDisplay'>Hi {this.state.username} you are currently connected to the {this.state.familyName ? this.state.familyName : "Join a family to get started!"} family!</div>
+                    <div className='familyNameDisplay'>Hi {this.state.username} you are currently connected to the {this.state.familyName ? this.state.familyName : "Join a family to get started!"} family!</div>
 
                     <input
                         type="text"
