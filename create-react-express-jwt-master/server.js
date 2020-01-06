@@ -46,6 +46,19 @@ app.post('/api/signup', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
+app.put("api/addFamily", function(req, res) {
+  db.User.update({ username: req.body.username }, { $set: { family: req.body.familyName} })
+  .then(data => res.json(data))
+  .catch(err => res.status(400).json(err));
+})
+
+app.put("api/addPicture", function(req, res) {
+  console.log('hey')
+  db.User.update({ username: req.body.username }, { $set: { picture: req.body.personalPic} })
+  .then(data => res.json(data))
+  .catch(err => res.status(400).json(err));
+})
+
 // Any route with isAuthenticated is protected and you need a valid token
 // to access
 app.get('/api/user/:id', isAuthenticated, (req, res) => {
@@ -76,18 +89,6 @@ app.use(function (err, req, res, next) {
     next(err);
   }
 });
-
-app.get("/api/addFamily", function(req, res) {
-  db.User.update({ username: req.body.username }, { $set: { family: req.body.familyName} })
-  .then(data => res.json(data))
-  .catch(err => res.status(400).json(err));
-})
-
-app.get("/api/addPicture", function(req, res) {
-  db.User.update({ username: req.body.username }, { $set: { personalPic: req.body.personalPic} })
-  .then(data => res.json(data))
-  .catch(err => res.status(400).json(err));
-})
 
 // Send every request to the React app
 // Define any API routes before this runs

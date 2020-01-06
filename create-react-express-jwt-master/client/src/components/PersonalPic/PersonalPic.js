@@ -3,13 +3,12 @@ import withAuth from './../withAuth';
 import API from "../../utils/API";
 import './PersonalPic.css';
 
-const unknownImage = "https://img.icons8.com/nolan/64/000000/help--v2.png";
-
 class PersonalPic extends Component {
 
     state = {
         username: "",
-        personalPic: ""
+        personalPic: "",
+        inputValue: ""
     };
 
     componentDidMount() {
@@ -17,16 +16,46 @@ class PersonalPic extends Component {
         API.getUser(this.props.user.id).then(res => {
             this.setState({
                 username: res.data.username,
-                personalPic: res.data.personalPic
+                personalPic: res.data.picture
             })
         })
     }
 
+    handleInputChange = event => {
+        this.setState({
+            inputValue: event.target.value
+        });
+    };
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+
+        API.getUser(this.props.user.id).then(res => {
+            API.addPictureURL(this.state.username, this.state.inputValue)
+        });
+    };
+
     render() {
         return (
+
             <div className='personalPicDiv'>
-                <img className='personalPic' alt="Profile" src={this.state.personalPic ? this.state.personalPic : unknownImage}></img>
-                <button className='addPic'>Change Picture</button>
+
+                <img className='personalPic' id="personalPic" alt="Profile" src={this.state.personalPic}></img>
+
+                <form onSubmit={this.handleFormSubmit}>
+
+                    <input
+                        type="text"
+                        value={this.state.value}
+                        className="form-control"
+                        id="pictureUrl"
+                        placeholder="Enter a link here to change picture!"
+                        onChange={this.handleInputChange}
+                    />
+
+                    <button type="submit" className="btn addPictureSubmit">Submit</button>
+
+                </form>
             </div>
         )
     }

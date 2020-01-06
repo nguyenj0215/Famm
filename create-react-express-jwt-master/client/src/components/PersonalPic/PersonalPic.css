@@ -10,3 +10,6 @@
 .addPic {
     margin-top: 5px;
 }
+.addPictureSubmit {
+    border: 1px solid black;
+}
