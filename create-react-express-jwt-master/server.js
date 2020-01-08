@@ -63,6 +63,12 @@ app.put("/api/addPost", function(req,res) {
   .catch(err => res.status(400).json(err));
 })
 
+app.get('/api/allUsers', (req, res) => {
+  db.User.find({})
+    .then(data => res.json(data))
+    .catch(err => res.status(400).json(err));
+})
+
 // Any route with isAuthenticated is protected and you need a valid token
 // to access
 app.get('/api/user/:id', isAuthenticated, (req, res) => {

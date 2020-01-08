@@ -1,20 +1,41 @@
 import React, { Component } from "react";
-import AuthService from '../AuthService';
+import withAuth from './../withAuth';
+import API from "../../utils/API";
 import './Postings.css';
 
 class Postings extends Component {
-    constructor() {
-        super();
-        this.Auth = new AuthService();
+
+    state = {
+        username: "",
+        personalPic: "",
+        recentPost: '',
+        postings: "",
+        family: ""
+    };
+
+    componentDidMount() {
+
+        API.getUser(this.props.user.id).then(res => {
+            this.setState({
+                username: res.data.username,
+                personalPic: res.data.picture,
+                recentPost: res.data.post,
+                family: res.data.family
+            })
+        });
+
     }
 
     render() {
         return (
-            <div className='postings col-sm-12'>
+            <div className='postingsDiv col-sm-12'>
                 Postings Here
+                <div className='postings'>
+
+                </div>
             </div>
         )
     }
 }
 
-export default Postings;
+export default withAuth(Postings);

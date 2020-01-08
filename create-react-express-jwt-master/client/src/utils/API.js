@@ -20,5 +20,8 @@ export default {
   //add a posting to your family
   addPost: (username, post) => {
     return axios.put('/api/addPost', {username: username, post: post})
-  }
+  },
+  getAllUsers: () => {
+    return axios.get("/api/allUsers");
+  },
 };
