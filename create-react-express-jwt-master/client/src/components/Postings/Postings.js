@@ -23,9 +23,15 @@ class Postings extends Component {
                 family: res.data.family
             })
         });
+
         API.getRecentPosts(this.props.user.id).then(res => {
-            //loop through the res.data.post and for each use the username, pic, recent post at res.data.post.length
-            
+
+            let postingsArr = [];
+
+            for (let i = 0; i < res.data.length; i++) {
+                postingsArr.push(res.data[i].post[res.data[i].post.length-1])
+            }
+            console.log(postingsArr);
         });
 
     }
@@ -35,7 +41,7 @@ class Postings extends Component {
             <div className='postingsDiv col-sm-12'>
                 Postings Here
                 <div className='postings'>
-
+                    
                 </div>
             </div>
         )
