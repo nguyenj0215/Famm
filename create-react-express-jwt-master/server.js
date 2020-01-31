@@ -44,29 +44,35 @@ app.post('/api/signup', (req, res) => {
     .then(data => res.json(data))
     .catch(err => res.status(400).json(err));
 });
-
+// FAMILY ADDITION ROUTE
 app.put("/api/addFamily", function(req, res) {
   db.User.update({ username: req.body.username }, { $set: { family: req.body.familyName} })
   .then(data => res.json(data))
   .catch(err => res.status(400).json(err));
 })
-
+// PICTURE ADDITION ROUTE
 app.put("/api/addPicture", function(req, res) {
   db.User.update({ username: req.body.username }, { $set: { picture: req.body.personalPic} })
   .then(data => res.json(data))
   .catch(err => res.status(400).json(err));
 })
-
+// POST ADDITION ROUTE
 app.put("/api/addPost", function(req,res) {
-  db.User.update({username: req.body.username}, { $set: {post: req.body.post}})
+  db.User.update({username: req.body.username}, { $push: {post: req.body.post}})
   .then(data => res.json(data))
   .catch(err => res.status(400).json(err));
 })
-
+// ROUTE TO GET ALL USERS IN DATABASE
 app.get('/api/allUsers', (req, res) => {
   db.User.find({})
     .then(data => res.json(data))
     .catch(err => res.status(400).json(err));
+})
+// ROUTE TO GET EACH USERS MOST RECENT POSTING
+app.get('/api/recentPosts', (req, res) => {
+  db.User.find({})
+  .then(data => res.json(data))
+  .catch(err => res.status(400).json(err));
 })
 
 // Any route with isAuthenticated is protected and you need a valid token

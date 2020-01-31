@@ -24,4 +24,7 @@ export default {
   getAllUsers: () => {
     return axios.get("/api/allUsers");
   },
+  getRecentPosts: () => {
+    return axios.get('/api/recentPosts');
+  }
 };

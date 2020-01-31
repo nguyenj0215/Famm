@@ -9,7 +9,7 @@ class Postings extends Component {
         username: "",
         personalPic: "",
         recentPost: '',
-        postings: "",
+        postings: [],
         family: ""
     };
 
@@ -22,6 +22,10 @@ class Postings extends Component {
                 recentPost: res.data.post,
                 family: res.data.family
             })
+        });
+        API.getRecentPosts(this.props.user.id).then(res => {
+            //loop through the res.data.post and for each use the username, pic, recent post at res.data.post.length
+            
         });
 
     }

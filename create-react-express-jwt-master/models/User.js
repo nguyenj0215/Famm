@@ -29,12 +29,8 @@ const UserSchema = new Schema({
   family: {
     type: String
   },
-  //Change post type to an array through mongoose, instead of updating value every time 
-  //just push to the array of posts for this user, maybe clear all of the array once hit 4 indexes
-  //when loading posts we can do some dynamic thing like when we click on someones name it loads
-  //posts for that user
   post: {
-    type: String
+    type: [String]
   },
   createdAt: {
     type: Date,
