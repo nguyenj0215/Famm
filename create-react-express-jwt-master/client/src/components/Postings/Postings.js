@@ -25,13 +25,9 @@ class Postings extends Component {
         });
 
         API.getRecentPosts(this.props.user.id).then(res => {
-
-            let postingsArr = [];
-
-            for (let i = 0; i < res.data.length; i++) {
-                postingsArr.push(res.data[i].post[res.data[i].post.length-1])
-            }
-            console.log(postingsArr);
+            this.setState({
+                postings: res.data
+            })
         });
 
     }
@@ -41,7 +37,15 @@ class Postings extends Component {
             <div className='postingsDiv col-sm-12'>
                 Postings Here
                 <div className='postings'>
-                    
+                    {/* {this.state.postings.map(posts => (
+                        < PostBoxes
+                        key={posts.id}
+                        id={posts.id}
+                        image = {posts.picture}
+                        username = {posts.username}
+                        post = {posts.post[posts.post.length-1]}
+                        />
+                    ))} */}
                 </div>
             </div>
         )
